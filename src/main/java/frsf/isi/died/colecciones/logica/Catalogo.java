@@ -39,11 +39,18 @@ public class Catalogo {
 		else this.catalogo = new LinkedHashSet<>(this.catalogo);
 	}
 
-	public void agregar(Serie s) throws SerieExistenteException {
+	public Catalogo agregar(Serie s) throws SerieExistenteException {
 		boolean agregado = this.catalogo.add(s);
 		if(!agregado) throw new SerieExistenteException();
+		return this;
 	}
-	
+
+	public Catalogo agregar(String nombre,Integer calificacion,Integer reprod) throws SerieExistenteException {
+		boolean agregado = this.catalogo.add(new Serie(nombre,calificacion,reprod));
+		if(!agregado) throw new SerieExistenteException();
+		return this;
+	}
+
 	public void catalogoHashSet() {
 		System.out.println("TIPO ESTRUCTURA: "+this.tipoColeccion);
 	}
